@@ -27,6 +27,8 @@ class Admin extends \yii\db\ActiveRecord
      */
     public function rules()
     {
+
+        
         return [
             [['name', 'email', 'password'], 'required'],
             [['password'], 'string'],

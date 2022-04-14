@@ -70,9 +70,12 @@ class AdminController extends Controller
         $model = new Admin();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            
+            if ($model->load($this->request->post())){           $model->password = password_hash($model->password, PASSWORD_DEFAULT);
+            if($model->save()){ 
                 return $this->redirect(['view', 'ID' => $model->ID]);
-            }
+                 }
+             } 
         } else {
             $model->loadDefaultValues();
         }
